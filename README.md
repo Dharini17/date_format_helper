@@ -27,7 +27,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  date_format_helper: ^0.0.1
+  date_format_helper: ^0.0.3
 ```
 
 Then, run:
@@ -55,8 +55,12 @@ import 'package:date_format_helper/date_format_helper.dart';
 
 void main() {
   DateTime now = DateTime.now();
-
+  
+  print('Date: ${DateFormatHelper.formatDateMonthYear(now)}'); // e.g., 23 Dec 2024
   print('Full Date: ${DateFormatHelper.formatFullDate(now)}'); // e.g., Monday, 23 Dec 2024
+  print('Date: ${DateFormatHelper.formatShortMonthYear(now)}'); // e.g., Dec 2024
+  print('Date: ${DateFormatHelper.formatFullMonthYear(now)}'); // e.g., December 2024
+  print('Date : ${DateFormatHelper.formatDateNMonthYear(now)}'); // e.g., 23rd Dec 2024
   print('Short Date: ${DateFormatHelper.formatShortDate(now)}'); // e.g., 23/12/2024
   print('12-hour Time: ${DateFormatHelper.formatTime12Hour(now)}'); // e.g., 10:30 PM
   print('24-hour Time: ${DateFormatHelper.formatTime24Hour(now)}'); // e.g., 22:30
@@ -77,15 +81,19 @@ void main() {
 
 #### Formatting
 
-| Method                    | Description                                | Example Output           |
-|---------------------------|--------------------------------------------|--------------------------|
-| `formatDate`              | Custom date format.                       | `23/12/2024`            |
-| `formatFullDate`          | Full date in human-readable format.        | `Monday, 23 Dec 2024`   |
-| `formatShortDate`         | Short date format.                        | `23/12/2024`            |
-| `formatTime12Hour`        | Time in 12-hour format.                   | `10:30 PM`              |
-| `formatTime24Hour`        | Time in 24-hour format.                   | `22:30`                 |
-| `formatTimestamp`         | Timestamp format.                         | `2024-12-23 22:30:00`   |
-| `formatISO`               | ISO-8601 format.                          | `2024-12-23T22:30:00.000Z` |
+| Method                    | Description                         | Example Output             |
+|---------------------------|-------------------------------------|----------------------------|
+| `formatDate`              | Custom date format.                 | `23/12/2024`               |
+| `formatDateMonthYear`     | Full date in dd MMM yyyy.           | `23 Dec 2024`              |
+| `formatShortMonthYear`    | date in MMM yyyy.                   | `Dec 2024`                 |
+| `formatFullMonthYear`     | date in MMMM yyyy.                  | `December 2024`            |
+| `formatDateNMonthYear`    | date by like 1st,2nd.               | `23rd Dec 2024`            |
+| `formatFullDate`          | Full date in human-readable format. | `Monday, 23 Dec 2024`      |
+| `formatShortDate`         | Short date format.                  | `23/12/2024`               |
+| `formatTime12Hour`        | Time in 12-hour format.             | `10:30 PM`                 |
+| `formatTime24Hour`        | Time in 24-hour format.             | `22:30`                    |
+| `formatTimestamp`         | Timestamp format.                   | `2024-12-23 22:30:00`      |
+| `formatISO`               | ISO-8601 format.                    | `2024-12-23T22:30:00.000Z` |
 
 #### Parsing
 

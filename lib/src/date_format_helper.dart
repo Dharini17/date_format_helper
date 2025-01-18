@@ -6,6 +6,48 @@ class DateFormatHelper {
     return DateFormat(format).format(date);
   }
 
+  /// Returns a human-readable date like '23 Dec 2024'.
+  static String formatDateMonthYear(DateTime date) {
+    return DateFormat('dd MMM yyyy').format(date);
+  }
+
+  /// Returns a human-readable date like 'Dec 2024'.
+  static String formatShortMonthYear(DateTime date) {
+    return DateFormat('MMM yyyy').format(date);
+  }
+
+  /// Returns a human-readable date like 'December 2024'.
+  static String formatFullMonthYear(DateTime date) {
+    return DateFormat('MMMM yyyy').format(date);
+  }
+
+  /// Returns a human-readable date like '2nd Dec 2024'.
+  static String formatDateNMonthYear(DateTime date) {
+    int day = date.day;
+    String suffix;
+
+    if (day >= 11 && day <= 13) {
+      suffix = 'th';
+    } else {
+      switch (day % 10) {
+        case 1:
+          suffix = 'st';
+          break;
+        case 2:
+          suffix = 'nd';
+          break;
+        case 3:
+          suffix = 'rd';
+          break;
+        default:
+          suffix = 'th';
+      }
+    }
+
+    String monthYear = DateFormat('MMM, yyyy').format(date);
+    return '$day$suffix $monthYear';
+  }
+
   /// Returns a human-readable date like 'Monday, 23 Dec 2024'.
   static String formatFullDate(DateTime date) {
     return DateFormat('EEEE, d MMM y').format(date);
